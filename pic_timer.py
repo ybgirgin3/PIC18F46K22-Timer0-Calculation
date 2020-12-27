@@ -1,18 +1,17 @@
-
+# this function only works on Timer0
 def TMR0():
     """
     TMR = Resolution - (( T * Fosc ) / (4 * Prescale))
 
 
-    ### tmr0 ve tmr0L, tmr0H gibi değerleri bulmanın bir diğer yöntemi
+    ### The method of the calculation of values like tmr0 and tmr0L, tmr0H 
     INF:
-        - tmr0 8 bit genişliğindeo yüzden direk olarak 2**8 = 256 değerini alabilirim, pres değerine gerek yok
         - tmr0H ve tmr0L:
-            istenen delay: 3ms
+            the_wanted_delay: 3ms
             XTAL = 4 MHz
             Fins = XTaL / 4 = 1 MHz
             Tins = 1 / Fins = 1 us
-            Timer Count = istenen delay / Tins = 3ms/1us = 3000
+            Timer Count = the_wanted_delay / Tins = 3ms/1us = 3000
 
 
             initial values for timer =  (max count) - count + 1
@@ -29,11 +28,7 @@ def TMR0():
     res = int(input('(Resolution) The max value of the timer: '))
     T = float(input('(T) Delay Time in Second: '))
     Fosc = int(input('(Fosc) The oscillator freq (MHZ): '))
-    #pres = int(input('(Prescale) The max prescale value: '))
-    pres = 2**8
-
-
-    # delay calculation
+    pres = int(input('(Prescale) The max prescale value: '))
 
 
    # calculate and print
@@ -71,7 +66,7 @@ def internal_inst_cycle():
 
 if __name__ == '__main__':
     print("""
-        1: TMR HESAPLA
+        1: TMR
 
     """)
     option = int(input('~# :: '))
@@ -80,5 +75,5 @@ if __name__ == '__main__':
     elif option == 2:
         internal_inst_cycle()
     else: 
-        print('aralıkta bir değer girin !!')
+        print('Give a value in range!')
 
